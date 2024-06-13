@@ -13,9 +13,9 @@ function getHumanChoice(){
 }
 // console.log(getHumanChoice());
 
-humanScore=computerScore=0;
 
 function playRound(humanChoice,computerChoice){
+    humanScore=0,computerScore=0;
     humChoice=humanChoice.toLowerCase()
     comChoice=computerChoice
     w='win',l='lose'
@@ -57,6 +57,27 @@ function playRound(humanChoice,computerChoice){
         computerScore+=1
         
     }
-   
+    // console.log(humanScore,computerScore);
+    
+    if(computerScore){
+        return 'computer'
     }
-playRound(getHumanChoice(),getComputerChoice())
+    else if(humanScore) return 'human'
+ }
+
+playGame=function(){
+    i=0
+    let humanScore=0,computerScore=0
+    while(i<5){
+        let ans=playRound(getHumanChoice(),getComputerChoice())
+        // console.log(ans);
+        
+        if(ans=='human') humanScore++
+        else if(ans=='computer') computerScore++
+        i++
+    }
+    console.log(`human : ${humanScore} computer : ${computerScore}`);
+    
+}
+
+playGame()
