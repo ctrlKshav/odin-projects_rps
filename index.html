@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:1rem;
+            background-color:paleturquoise;
+            height: 50px;
+            border: 2px solid black;
+            margin-bottom: 10px;
+        }
+        button{
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body>
     <h1>This is Rock Paper Scissors</h1>
+    <div class="container">
+        <div id="rock">
+            <button>Rock</button>
+        </div>
+        <div id="paper">
+            <button>Paper</button>
+        </div>
+        <div id="scissors">
+            <button>Scissors</button>
+        </div>
+    </div>
 </body>
 </html> 

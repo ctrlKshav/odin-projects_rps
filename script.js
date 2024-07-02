@@ -13,7 +13,6 @@ function getHumanChoice(){
 }
 // console.log(getHumanChoice());
 
-
 function playRound(humanChoice,computerChoice){
     humanScore=0,computerScore=0;
     humChoice=humanChoice.toLowerCase()
@@ -65,19 +64,50 @@ function playRound(humanChoice,computerChoice){
     else if(humanScore) return 'human'
  }
 
-playGame=function(){
-    i=0
-    let humanScore=0,computerScore=0
-    while(i<5){
-        let ans=playRound(getHumanChoice(),getComputerChoice())
-        // console.log(ans);
-        
-        if(ans=='human') humanScore++
-        else if(ans=='computer') computerScore++
-        i++
+ newDiv=document.createElement('div')
+ human=document.createElement('div')
+ computer=document.createElement('div')
+ 
+ newDiv.setAttribute('class','container')
+ human.setAttribute('id','human')
+ computer.setAttribute('id','computer')
+ document.body.appendChild(newDiv)
+ 
+ newDiv.append(human,computer)
+
+ let hScore=0,cScore=0;
+ human.textContent=`You - ${hScore}`
+ computer.textContent=`Computer - ${cScore}`
+
+
+
+rock=document.getElementById('rock')
+paper=document.getElementById('paper')
+scissors=document.getElementById('scissors')
+
+function callBack(e){
+    wl=playRound(e.target.textContent,getComputerChoice())
+    if(wl=='human'){
+        hScore++
+        human.textContent=`You - ${hScore}`
+        if(hScore==5){
+            alert("YOU WON!!!")
+        }
     }
-    console.log(`human : ${humanScore} computer : ${computerScore}`);
-    
+    else if(wl=='computer'){
+        cScore++;
+        computer.textContent=`Computer - ${cScore}`
+        if(cScore==5){
+            alert("COMPUTER WON !!!!!")
+        }
+    }
+
 }
 
-playGame()
+rock.addEventListener('click',callBack)
+
+paper.addEventListener('click',callBack)
+
+scissors.addEventListener('click',callBack)
+
+ 
